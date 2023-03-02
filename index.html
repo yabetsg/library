@@ -5,28 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" href="./style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div><h1>Library</h1></div>
-    <div id="display"></div>
-    <button type="submit">Add Book</button>
+    <main>
+        <div style="background-color: aqua; text-align: center; color: black;"><h1>Book Library</h1></div>
+        <div class="form-container">
+    
+
+    
     <div class="form-div">
         <form class="form" action="#" method="get">
-            <label for="title">Title</label>
-            <input class="title" type="text">
+            <div>
+           
+            <input placeholder="Title" class="title" type="text">
+            </div>
+            
+            <div>
+            
+            <input placeholder="Author" class="author" type="text">
+            </div>
 
-            <label for="author">Author</label>
-            <input class="author" type="text">
+            <div>
+            
+            <input placeholder="Pages" class="page" type="text">
+            </div>
 
-            <label for="page">Page</label>
-            <input class="page" type="text">
-
-            <label for="read">Read</label>
-            <input class="read" type="text">
-
+            <div class="checkbox-div">
+            <label id="readcheckbox" for="read">Have you read this book?</label>
+            <input  class="read" type="checkbox">
+            </div>
             <button type="submit">Add</button>
         </form>
     </div>
+
+    <div class="display-parent">
+    </div>
+    
+        </div>
+    </main>
 </body> 
 </html>
