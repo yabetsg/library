@@ -1,87 +1,108 @@
-const display = document.querySelector(".display-parent");
-const title = document.querySelector(".title");
-const author = document.querySelector(".author");
-const page = document.querySelector(".page");
-const read = document.querySelector(".read");
-const form = document.querySelector(".form");
-// const readButton = document.querySelector(.)
+const display = document.querySelector('.display-parent');
+const title = document.querySelector('.title');
+const author = document.querySelector('.author');
+const page = document.querySelector('.page');
+const read = document.querySelector('.read');
+const form = document.querySelector('.form');
 
-let myLibrary = [];
+const myLibrary = [];
 
-
-function Book(title,author,page,read){
-    this.title= title;
-    this.author = author;
-    this.page = page;
-    this.read = read;
-    
-};
-
-
-function addBookToLibrary(title,author,page,read) {
-    let book = new Book(title,author,page,read);
-     myLibrary.push(book);
-  };
-function showBooks(){
-    let btitle = '';
-    let bauthor = '';
-    let bpage = '';
-    let bread = '';
-    myLibrary.forEach(books => {
-       btitle = books.title;
-       bauthor = books.author ;
-       bpage =books.page ;
-        bread   =books.read ;
-    }); 
-      return  btitle + "\n"+ "\n"+bauthor + "\n"+"\n" + bpage + "\n"+ "\n"+ "\n";
+function Book(newtitle, newauthor, newpage, newread) {
+  this.newtitle = newtitle;
+  this.newauthor = newauthor;
+  this.newpage = newpage;
+  this.newread = newread;
 }
 
- let count = 0;
-form.addEventListener("submit", (e)=>{
-   count++;
-   
-    
-    addBookToLibrary(title.value,author.value,page.value,read.value);
-    var article = document.createElement('article');
-    let buttondiv = document.createElement('div');
-    var div = document.createElement('div');
-    
-    var removeButton = document.createElement('button');
-    let checkedButton = document.createElement('button');
-    buttondiv.appendChild(removeButton);
-    buttondiv.appendChild(checkedButton);
-    div.classList.add(`display-${count}`);
-    removeButton.classList.add(`display-${count}`);
-    article.appendChild(div);
-    
-    if(read.checked){
-        checkedButton.textContent = "Read";
-        checkedButton.style.backgroundColor = "green";
-        article.appendChild(checkedButton);
-    }else{
-        checkedButton.textContent = "Not Read";
-        checkedButton.style.backgroundColor = "red";
-        article.appendChild(checkedButton);        
+function addBookToLibrary(inputTitle, inputAuthor, inputPage, inputRead) {
+  const book = new Book(inputTitle, inputAuthor, inputPage, inputRead);
+  myLibrary.push(book);
+}
+function showBooks() {
+  let bookTitle = '';
+  let bookAuthor = '';
+  let bookPage = '';
+  // eslint-disable-next-line no-unused-vars
+  let bookRead = '';
+  myLibrary.forEach((books) => {
+    bookTitle = books.newtitle;
+    bookAuthor = books.newauthor;
+    bookPage = books.newpage;
+    bookRead = books.newread;
+  });
+  return (
+    `${bookTitle.charAt(0).toUpperCase()
+    + bookTitle.slice(1)
+    }\n`
+    + `\n${
+      bookAuthor.charAt(0).toUpperCase()
+    }${bookTitle.slice(1)
+    }\n`
+    + `\n${
+      bookPage
+    }\n`
+    + '\n'
+    + '\n'
+  );
+}
+
+// Add button event
+
+let count = 0;
+form.addEventListener('submit', () => {
+  count += 1;
+
+  addBookToLibrary(title.value, author.value, page.value, read.value);
+  const article = document.createElement('article');
+  const buttondiv = document.createElement('div');
+  const div = document.createElement('div');
+
+  const removeButton = document.createElement('button');
+  const checkedButton = document.createElement('button');
+  buttondiv.appendChild(removeButton);
+  buttondiv.appendChild(checkedButton);
+  div.classList.add(`display-${count}`);
+  removeButton.classList.add(`display-${count}`);
+  article.appendChild(div);
+
+  if (read.checked) {
+    checkedButton.textContent = 'Read';
+    checkedButton.style.backgroundColor = 'green';
+    article.appendChild(checkedButton);
+  } else {
+    checkedButton.textContent = 'Not Read';
+    checkedButton.style.backgroundColor = 'red';
+    article.appendChild(checkedButton);
+  }
+  article.appendChild(removeButton);
+  display.appendChild(article);
+
+  const displaygrid = document.querySelector(`.display-${count}`);
+
+  displaygrid.innerText = showBooks();
+  title.value = '';
+  author.value = '';
+  page.value = '';
+  read.value = '';
+  const buttongrid = document.querySelector(`button.display-${count}`);
+  buttongrid.textContent = 'Remove';
+
+  // remove button event
+
+  buttongrid.addEventListener('click', () => {
+    display.removeChild(article);
+    count += 1;
+  });
+
+  // checkbox event
+  checkedButton.addEventListener('click', () => {
+    if (checkedButton.textContent === 'Read') {
+      checkedButton.textContent = 'Not Read';
+      checkedButton.style.backgroundColor = 'red';
+    } else {
+      checkedButton.textContent = 'Read';
+      checkedButton.style.backgroundColor = 'green';
     }
-    article.appendChild(removeButton);
-    display.appendChild(article);  
-    console.log(display);  
-    const displaygrid = document.querySelector(`.display-${count}`);
-    
-    displaygrid.innerText = showBooks();
-    title.value = "";
-    author.value = "";
-    page.value = "";
-    read.value = "";
-    const buttongrid = document.querySelector(`button.display-${count}`);
-    buttongrid.textContent = "Remove";
-    console.log(buttongrid);
-    
-    buttongrid.addEventListener('click', e =>{
-        display.removeChild(article);
-        count++
-    });
-       
+    count += 1;
+  });
 });
-
-

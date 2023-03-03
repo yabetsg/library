@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <main>
-        <div style="background-color: aqua; text-align: center; color: black;"><h1>Book Library</h1></div>
-        <div class="form-container">
-    
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Library</title>
+		<link rel="stylesheet" href="./style.css" />
+		<link
+			rel="stylesheet"
+			media="screen"
+			href="https://fontlibrary.org//face/unique"
+			type="text/css"
+		/>
+		<link
+			rel="stylesheet"
+			media="screen"
+			href="https://fontlibrary.org//face/avara"
+			type="text/css"
+		/>
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<main>
+			<div style="background-color: #af5b6a; text-align: center; color: black">
+				<h1>Book Library</h1>
+			</div>
+			<div class="form-container">
+				<div class="form-div">
+					<form class="form" action="#" method="get">
+						<div>
+							<input
+								placeholder="Title"
+								class="title"
+								type="text"
+								required
+								maxlength="50"
+							/>
+						</div>
 
-    
-    <div class="form-div">
-        <form class="form" action="#" method="get">
-            <div>
-           
-            <input placeholder="Title" class="title" type="text">
-            </div>
-            
-            <div>
-            
-            <input placeholder="Author" class="author" type="text">
-            </div>
+						<div>
+							<input
+								placeholder="Author"
+								class="author"
+								type="text"
+								required
+								maxlength="50"
+							/>
+						</div>
 
-            <div>
-            
-            <input placeholder="Pages" class="page" type="text">
-            </div>
+						<div>
+							<input
+								placeholder="Pages"
+								class="page"
+								type="number"
+								required
+								maxlength="10"
+							/>
+						</div>
 
-            <div class="checkbox-div">
-            <label id="readcheckbox" for="read">Have you read this book?</label>
-            <input  class="read" type="checkbox">
-            </div>
-            <button type="submit">Add</button>
-        </form>
-    </div>
+						<div class="checkbox-div">
+							<label id="readcheckbox" for="read"
+								>Have you read this book?</label
+							>
+							<input class="read" type="checkbox" />
+						</div>
+						<button type="submit">Add</button>
+					</form>
+				</div>
 
-    <div class="display-parent">
-    </div>
-    
-        </div>
-    </main>
-</body> 
+				<div class="display-parent"></div>
+			</div>
+		</main>
+	</body>
 </html>
