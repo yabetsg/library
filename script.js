@@ -6,14 +6,14 @@ const read = document.querySelector('.read');
 const form = document.querySelector('.form');
 
 const myLibrary = [];
-
-function Book(newtitle, newauthor, newpage, newread) {
-  this.newtitle = newtitle;
-  this.newauthor = newauthor;
-  this.newpage = newpage;
-  this.newread = newread;
+class Book {
+  constructor(newtitle, newauthor, newpage, newread) {
+    this.newtitle = newtitle;
+    this.newauthor = newauthor;
+    this.newpage = newpage;
+    this.newread = newread;
+  }
 }
-
 function addBookToLibrary(inputTitle, inputAuthor, inputPage, inputRead) {
   const book = new Book(inputTitle, inputAuthor, inputPage, inputRead);
   myLibrary.push(book);
